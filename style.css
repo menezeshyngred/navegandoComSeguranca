@@ -56,12 +56,24 @@
 }
 
 button{
-   width: 100%;
+   width: 80%;
    text-align: start;
-   padding: 10px;
+   padding: 20px;
    border: none;
-   border-radius: 50px;
+   border-radius: 15px;
    cursor: pointer;
-   background-color: rgb(6, 99, 136);
+   background-color: rgb(1, 53, 73);
    color: rgb(255, 255, 255);
+}
+p{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.verdadeiro {
+    background-color: rgb(63, 43, 216);
+    color: rgb(255, 255, 255);
+}
+.falso {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 251, 251);
 }

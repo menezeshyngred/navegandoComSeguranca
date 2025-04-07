@@ -2,36 +2,161 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Navegando Com Segurança </title>
-
+    <title>Navegando Com Segurança</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url(img.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
+        }
+       
+    </style>
 </head>
-<style>
-    body{
-        background-image: url(img.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;  
-        background-size: cover;
-}
-</style>
 <body>
-    <h2>Navegando Com Segurança</h2>
-
-    <main> 
-          
-        <div class="content">
-            <span class="Quantidade"></span>
-            <span class="Questao"></span>
-            <div class="Respostas"></div>
+    <div class="quiz-container">
+        <h2>Navegando Com Segurança</h2>
+        <div id="quiz">
+            <p id="perguntas"></p>
+            <div id="respostas"></div>
+            <button id="next-btn">Próxima Questão</button>
+            <p id="score"></p>
         </div>
-        <Div class="Vamos começar">
-            <span></span>
-            <button>Vamos começar</button>
+    </div>
+    <script>
+        const quiz = [
+            {
+                perguntas: "Em que ano a internet surgiu?",
+                respostas: [
+                    { resposta: "1960", correto: true },
+                    { resposta: "1580", correto: false },
+                    { resposta: "1962", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador da internet?",
+                respostas: [
+                    { resposta: "Tim Berners-Lee", correto: true },
+                    { resposta: "Bill Gates", correto: false },
+                    { resposta: "Stervan Gorge", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+             {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            }, 
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            },
+            {
+                perguntas: "Qual o nome do criador do Google?",
+                respostas: [
+                    { resposta: "Luiz", correto: false },
+                    { resposta: "Larry Page", correto: true },
+                    { resposta: "Mario", correto: false },
+                ]
+            }
 
-        </Div>
-    </main>
-    
+        ];
 
+        let currentQuestionIndex = 0;
+        let score=0;
 
+        const perguntasElement = document.getElementById("perguntas");
+        const respostasContainer = document.getElementById("respostas");
+        const nextButton = document.getElementById("next-btn");
+        const scoreElement= document.getElementById("score");
+
+        function showQuestion() {
+            let currentQuestion = quiz[currentQuestionIndex];
+            perguntasElement.innerText = currentQuestion.perguntas;
+            respostasContainer.innerHTML = "";
+
+            currentQuestion.respostas.forEach(resposta => {
+                const button = document.createElement("button");
+                button.innerText = resposta.resposta;
+                button.classList.add("answer");
+                button.addEventListener("click", () => checkAnswer(button, resposta.correto));
+                respostasContainer.appendChild(button);
+            });
+
+            nextButton.style.display = "none"; 
+        }
+
+        function checkAnswer(button, isCorrect) {
+            if (isCorrect) {
+                button.classList.add("verdadeiro");
+                score++;
+            } else {
+                button.classList.add("falso");
+            }
+            document.querySelectorAll(".answer").forEach(btn => btn.disabled = true);
+            nextButton.style.display = "block";
+              }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quiz.length) {
+                showQuestion();
+            } else {
+                perguntasElement.innerText = "finalizado!";
+                respostasContainer.innerHTML = "";
+                nextButton.style.display = "none";
+                scoreElement.innerText = "você acertou " + score + " de " + quiz.length + " questoes! ";
+            }
+        });
+
+        showQuestion();
+    </script>
 </body>
 </html>
