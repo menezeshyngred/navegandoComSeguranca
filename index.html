@@ -1,162 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Navegando Com Segurança</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-image: url(img.jpg);
-            background-repeat: no-repeat;
-            background-attachment: fixed;  
-            background-size: cover;
-        }
-       
-    </style>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="quiz-container">
-        <h2>Navegando Com Segurança</h2>
-        <div id="quiz">
-            <p id="perguntas"></p>
-            <div id="respostas"></div>
-            <button id="next-btn">Próxima Questão</button>
-            <p id="score"></p>
+    <div class="container">
+        <div id="start-screen" class="screen active">
+            <h1> A internet está cheia de armadilhas… será que você sabe se proteger?</h1>
+            <button onclick="startQuiz()">Começar Quiz</button>
+        </div>
+    
+        <div id="quiz-screen" class="screen">
+            <div id="question"></div>
+            <div id="answers"></div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <h2>Resultado</h2>
+            <p id="score-text"></p>
+            <button onclick="restartQuiz()">Tentar Novamente</button>
         </div>
     </div>
-    <script>
-        const quiz = [
-            {
-                perguntas: "Em que ano a internet surgiu?",
-                respostas: [
-                    { resposta: "1960", correto: true },
-                    { resposta: "1580", correto: false },
-                    { resposta: "1962", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador da internet?",
-                respostas: [
-                    { resposta: "Tim Berners-Lee", correto: true },
-                    { resposta: "Bill Gates", correto: false },
-                    { resposta: "Stervan Gorge", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-             {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            }, 
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            },
-            {
-                perguntas: "Qual o nome do criador do Google?",
-                respostas: [
-                    { resposta: "Luiz", correto: false },
-                    { resposta: "Larry Page", correto: true },
-                    { resposta: "Mario", correto: false },
-                ]
-            }
 
+    <script>
+        const questions = [
+            {
+                question: "Em que ano a internet surguiu?",
+                answers:[
+                    { text:"1960", correct: true},
+                    { text:"1960", correct: false},
+                    { text:"1960", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador da internet?",
+                answers:[
+                    { text: "Tim Berners-Lee", correct: true},
+                    { text: "Bill Gates", correct: false},
+                    { text: "Stervan Gorge", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador do Google?",
+                answers:[
+                    { text: "Luiz", correct: false},
+                    { text: "Larry Page", correct: true},
+                    { text: "Mario", correct: false},
+                ],
+            },
+            {
+                question: "Em que ano a internet surguiu?",
+                answers:[
+                    { text:"1960", correct: true},
+                    { text:"1960", correct: false},
+                    { text:"1960", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador da internet?",
+                answers:[
+                    { text: "Tim Berners-Lee", correct: true},
+                    { text: "Bill Gates", correct: false},
+                    { text: "Stervan Gorge", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador do Google?",
+                answers:[
+                    { text: "Luiz", correct: false},
+                    { text: "Larry Page", correct: true},
+                    { text: "Mario", correct: false},
+                ],
+            },
+            {
+                question: "Em que ano a internet surguiu?",
+                answers:[
+                    { text:"1960", correct: true},
+                    { text:"1960", correct: false},
+                    { text:"1960", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador da internet?",
+                answers:[
+                    { text: "Tim Berners-Lee", correct: true},
+                    { text: "Bill Gates", correct: false},
+                    { text: "Stervan Gorge", correct: false},
+                ],
+            },
+            {
+                question: "Qual o nome do criador do Google?",
+                answers:[
+                    { text: "Luiz", correct: false},
+                    { text: "Larry Page", correct: true},
+                    { text: "Mario", correct: false},
+                ],
+            },
         ];
 
-        let currentQuestionIndex = 0;
-        let score=0;
+        let currentQuestion = 0;
+        let score= 0;
 
-        const perguntasElement = document.getElementById("perguntas");
-        const respostasContainer = document.getElementById("respostas");
-        const nextButton = document.getElementById("next-btn");
-        const scoreElement= document.getElementById("score");
+        const startScreen = document.getElementById("start-screen");
+        const quizScreen = document.getElementById("quiz-screen");
+        const resultScreen = document.getElementById("result-screen");
+        const questionE1 = document.getElementById("question");
+        const answerE1 = document.getElementById("answers");
+        const scoreText = document.getElementById("score-text");
 
-        function showQuestion() {
-            let currentQuestion = quiz[currentQuestionIndex];
-            perguntasElement.innerText = currentQuestion.perguntas;
-            respostasContainer.innerHTML = "";
-
-            currentQuestion.respostas.forEach(resposta => {
-                const button = document.createElement("button");
-                button.innerText = resposta.resposta;
-                button.classList.add("answer");
-                button.addEventListener("click", () => checkAnswer(button, resposta.correto));
-                respostasContainer.appendChild(button);
-            });
-
-            nextButton.style.display = "none"; 
+        function startQuiz() {
+            startScreen.classList.remove("active");
+            quizScreen.classList.add("active");
+            currentQuestion = 0;
+            score =0;
+            showQuestion();
         }
 
-        function checkAnswer(button, isCorrect) {
-            if (isCorrect) {
-                button.classList.add("verdadeiro");
-                score++;
-            } else {
-                button.classList.add("falso");
-            }
-            document.querySelectorAll(".answer").forEach(btn => btn.disabled = true);
-            nextButton.style.display = "block";
-              }
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            questionE1.textContent = q.question;
+            answerE1.innerHTML = "";
 
-        nextButton.addEventListener("click", () => {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < quiz.length) {
-                showQuestion();
-            } else {
-                perguntasElement.innerText = "finalizado!";
-                respostasContainer.innerHTML = "";
-                nextButton.style.display = "none";
-                scoreElement.innerText = "você acertou " + score + " de " + quiz.length + " questoes! ";
+            q.answers.forEach((answer)  => {
+                const btn = document.createElement("button");
+                btn.textContent = answer.text;
+                btn.classList.add("answer-btn");
+                btn.onclick = () => checkAnswer(answer.correct);
+                answerE1.appendChild(btn);
+            });
             }
-        });
 
+            function checkAnswer(correct) {
+                if (correct) score++;
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    endQuiz();
+                }
+                }
+
+            function endQuiz() {
+                quizScreen.classList.remove("active");
+                resultScreen.classList.add("active");
+                    
+                let message = "";
+                if (score === questions.length) {
+                    message = "Parabéns! Você é um ninja da segurança digital!";
+                } else if (score >= 5) {
+                    message = "Mandou bem! mas ainda dá pra reforçar sua defesa.";
+                }   else {
+                    message = "Ops! Alerta vermelho! Hora de aprender a se proteger.";
+                }
+
+                scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas. ${message}`;
+                }
+            
+                function restartQuiz() {
+                    resultScreen.classList.remove("active");
+                    startScreen.classList.add("active");
+                }
+            
         showQuestion();
-    </script>
+</script>
 </body>
 </html>
