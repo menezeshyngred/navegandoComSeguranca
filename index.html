@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <div id="start-screen" class="screen active">
+            <img src="imagens/icone.png" alt="Ícone de segurança" class="quiz-icon">
             <h1> A internet está cheia de armadilhas… será que você sabe se proteger?</h1>
             <button onclick="startQuiz()">Começar Quiz</button>
         </div>
@@ -133,36 +134,36 @@
             });
             }
 
-            function checkAnswer(correct) {
-                if (correct) score++;
-                currentQuestion++;
-                if (currentQuestion < questions.length) {
+        function checkAnswer(correct) {
+            if (correct) score++;
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
                     showQuestion();
-                } else {
-                    endQuiz();
-                }
-                }
+            } else {
+                endQuiz();
+            }
+        }
 
-            function endQuiz() {
-                quizScreen.classList.remove("active");
-                resultScreen.classList.add("active");
+        function endQuiz() {
+            quizScreen.classList.remove("active");
+            resultScreen.classList.add("active");
                     
-                let message = "";
-                if (score === questions.length) {
-                    message = "Parabéns! Você é um ninja da segurança digital!";
-                } else if (score >= 5) {
-                    message = "Mandou bem! mas ainda dá pra reforçar sua defesa.";
-                }   else {
-                    message = "Ops! Alerta vermelho! Hora de aprender a se proteger.";
-                }
+            let message = "";
+            if (score === questions.length) {
+                message = "Parabéns! Você é um ninja da segurança digital!";
+            } else if (score >= 5) {
+                message = "Mandou bem! mas ainda dá pra reforçar sua defesa.";
+            }   else {
+                message = "Ops! Alerta vermelho! Hora de aprender a se proteger.";
+            }
 
-                scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas. ${message}`;
-                }
+            scoreText.innerHTML = `Você acertou ${score} de ${questions.length} perguntas.<br> ${message}`;
+            }
             
-                function restartQuiz() {
-                    resultScreen.classList.remove("active");
-                    startScreen.classList.add("active");
-                }
+            function restartQuiz() {
+                resultScreen.classList.remove("active");
+                startScreen.classList.add("active");
+            }
             
         showQuestion();
 </script>
