@@ -29,11 +29,11 @@
     <script>
         const questions = [
             {
-                question: "Em que ano a internet surguiu?",
+                question: "Sobre Segurança Digital, é correto afirmar:",
                 answers:[
-                    { text:"1960", correct: true},
-                    { text:"1960", correct: false},
-                    { text:"1960", correct: false},
+                    { text:"São práticas e medidas utilizadas para proteger, dispositivos, dados, informações e atividades realizadas no ambiente digital.", correct: true},
+                    { text:"Consiste em tentativas de fraude para obter informações ilegalmente.", correct: false},
+                    { text:"Uma técnica usada por hackers para enganar pessoas e roubar informações.", correct: false},
                 ],
             },
             {
@@ -45,11 +45,11 @@
                 ],
             },
             {
-                question: "Qual o nome do criador do Google?",
+                question: "No que se refere ao uso de senhas, qual é a prática mais segura para proteger suas contas online?",
                 answers:[
-                    { text: "Luiz", correct: false},
-                    { text: "Larry Page", correct: true},
-                    { text: "Mario", correct: false},
+                    { text: "Usar a mesma senha para todas as contas, para facilitar o gerenciamento.", correct: false},
+                    { text: "Adotar senhas complexas e únicas para cada conta, combinando letras, números e símbolos.", correct: true},
+                    { text: "Utilizar senhas simples e fáceis de lembrar, como datas de nascimento.", correct: false},
                 ],
             },
             {
@@ -61,11 +61,11 @@
                 ],
             },
             {
-                question: "Qual o nome do criador da internet?",
+                question: "O que é Phishing?",
                 answers:[
-                    { text: "Tim Berners-Lee", correct: true},
-                    { text: "Bill Gates", correct: false},
-                    { text: "Stervan Gorge", correct: false},
+                    { text: "Uma técnica usada por hackers para enganar pessoas e roubar informações.", correct: true},
+                    { text: "Um jogo online.", correct: false},
+                    { text: "São anúncios indesejados no computador.", correct: false},
                 ],
             },
             {
@@ -77,11 +77,10 @@
                 ],
             },
             {
-                question: "Em que ano a internet surguiu?",
+                question: "O Wi-Fi público é sempre seguro para acessar contas bancárias?",
                 answers:[
-                    { text:"1960", correct: true},
-                    { text:"1960", correct: false},
-                    { text:"1960", correct: false},
+                    { text:"Não.", correct: true},
+                    { text:"Sim.", correct: false},
                 ],
             },
             {
@@ -93,11 +92,11 @@
                 ],
             },
             {
-                question: "Qual o nome do criador do Google?",
+                question: " ______ é a ação de gravar/registrar as teclas pressionadas em um teclado, normalmente de maneira secreta, para que a pessoa que usa o teclado não saiba que suas ações estão sendo monitoradas. ",
                 answers:[
-                    { text: "Luiz", correct: false},
-                    { text: "Larry Page", correct: true},
-                    { text: "Mario", correct: false},
+                    { text: "Ransomware.", correct: false},
+                    { text: "Keylogging.", correct: true},
+                    { text: "Phishing.", correct: false},
                 ],
             },
         ];
@@ -129,12 +128,41 @@
                 const btn = document.createElement("button");
                 btn.textContent = answer.text;
                 btn.classList.add("answer-btn");
-                btn.onclick = () => checkAnswer(answer.correct);
+                btn.onclick = () => handleAnswer(btn, answer.correct);
                 answerE1.appendChild(btn);
             });
             }
 
-        function checkAnswer(correct) {
+        function handleAnswer(button, isCorrect) {
+            const buttons = document.querySelectorAll(".answer-btn");
+
+            buttons.forEach(btn => btn.disabled = true); //destiva todos os butões.
+
+            if(isCorrect) {
+                button.classList.add("correct");
+                score++;
+                } else {
+                    button.classList.add("wrong");
+
+                    const correctAnswer = questions[currentQuestion].answers.find(a => a.correct).text;
+                    buttons.forEach(btn => {
+                        if (btn.textContent === correctAnswer) {
+                            btn.classList.add("correct");
+                        }
+                        
+                    });
+                }
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    endQuiz();
+                }
+            }, 1000);
+        }
+       /* function checkAnswer(correct) {
             if (correct) score++;
             currentQuestion++;
             if (currentQuestion < questions.length) {
@@ -142,7 +170,7 @@
             } else {
                 endQuiz();
             }
-        }
+        }*/
 
         function endQuiz() {
             quizScreen.classList.remove("active");

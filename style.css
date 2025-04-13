@@ -84,3 +84,22 @@ button:hover {
 .quiz-icon:hover {
     transform: scale(1.1);
 }
+
+/* Feedback visual */
+.correct {
+    background-color: #28a745; /* verde escuro */
+    color: #fff;
+    border-color: #28a745;
+}
+
+.wrong {
+    background-color: #dc3545; /* vermelho escuro */
+    color: #fff;
+    border-color: #dc3545;
+}
+
+/* Quando desabilitado, manter estilo sem clique */
+.answer-btn:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
