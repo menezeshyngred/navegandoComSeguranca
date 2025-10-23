@@ -10,7 +10,7 @@
     <div class="container">
         <div id="start-screen" class="screen active">
             <img src="imagens/icone.png" alt="Ícone de segurança" class="quiz-icon">
-            <h1> A internet está cheia de armadilhas… será que você sabe se proteger?</h1>
+            <h1> As ferramentas digitais estão por toda parte… será que você sabe aproveitar o melhor delas?</h1>
             <button onclick="startQuiz()">Começar Quiz</button>
         </div>
     
@@ -29,76 +29,78 @@
     <script>
         const questions = [
             {
-                question: "Sobre Segurança Digital, é correto afirmar:",
+                question: "Quando você precisa guardar arquivos e acessá-los de qualquer lugar, qual ferramenta é a melhor opção?",
                 answers:[
-                    { text:"São práticas e medidas utilizadas para proteger, dispositivos, dados, informações e atividades realizadas no ambiente digital.", correct: true},
-                    { text:"Consiste em tentativas de fraude para obter informações ilegalmente.", correct: false},
-                    { text:"Uma técnica usada por hackers para enganar pessoas e roubar informações.", correct: false},
+                    { text:"Google Drive.", correct: true},
+                    { text:"Trello ", correct: false},
+                    { text:"Canva ", correct: false},
+                    { text:"Word ", correct: false},
                 ],
             },
             {
-                question: "Em que década a internet começou a ser desenvolvida?",
+                question: "Qual dessas ferramentas é ideal para criar apresentações e posts com aparência profissional, mesmo sem ser designer?",
                 answers:[
-                    { text: "1950", correct: false},
-                    { text: "1960", correct: true},
-                    { text: "1980", correct: false},
+                    { text: " Google Docs", correct: false},
+                    { text: "Canva", correct: true},
+                    { text: "Trello", correct: false},
+                    { text: "ChatGPT", correct: false},
                 ],
             },
             {
-                question: "No que se refere ao uso de senhas, qual é a prática mais segura para proteger suas contas online?",
+                question: "Você quer organizar suas tarefas da semana de forma visual e prática. O que usa?",
                 answers:[
-                    { text: "Usar a mesma senha para todas as contas, para facilitar o gerenciamento.", correct: false},
-                    { text: "Adotar senhas complexas e únicas para cada conta, combinando letras, números e símbolos.", correct: true},
-                    { text: "Utilizar senhas simples e fáceis de lembrar, como datas de nascimento.", correct: false},
+                    { text: " Google Drive", correct: false},
+                    { text: "Trello", correct: true},
+                    { text: "Google Forms.", correct: false},
+                    { text: "Docs", correct: false},
                 ],
             },
             {
-                question: "Qual tecnologia foi essencial para o funcionamento da internet como conhecemos hoje?",
+                question: "Se você quer fazer um formulário para coletar opiniões ou listas de presença, qual ferramenta escolhe?",
                 answers:[
-                    { text:"TCP/IP", correct: true},
-                    { text:"HTML", correct: false},
-                    { text:"HTTP", correct: false},
+                    { text:"Google Forms", correct: true},
+                    { text:"Trello", correct: false},
+                    { text:"Word", correct: false},
+                    { text:"ChatGPT", correct: false},
                 ],
             },
             {
-                question: "O que é Phishing?",
+                question: "Qual dessas ferramentas permite editar um texto com outras pessoas ao mesmo tempo, salvando tudo automaticamente?",
                 answers:[
-                    { text: "Uma técnica usada por hackers para enganar pessoas e roubar informações.", correct: true},
-                    { text: "Um jogo online.", correct: false},
-                    { text: "São anúncios indesejados no computador.", correct: false},
+                    { text: "Google Docs.", correct: true},
+                    { text: "Canva", correct: false},
+                    { text: " Word Offline", correct: false},
+                    { text: " Trello", correct: false},
                 ],
             },
             {
-                question: "Qual era o nome da rede criada nos Estados Unidos que deu origem à internet?",
+                question: "Você precisa revisar um texto, gerar ideias ou pedir ajuda para planejar algo. Qual é o seu aliado perfeito?",
                 answers:[
-                    { text: "WebNet", correct: false},
-                    { text: "ARPANET", correct: true},
-                    { text: "InfoLink", correct: false},
+                    { text: "Google Drive", correct: false},
+                    { text: "ChatGPT ", correct: true},
+                    { text: "Trello", correct: false},
+                     { text: "Canva", correct: false},
                 ],
             },
             {
-                question: "O Wi-Fi público é sempre seguro para acessar contas bancárias?",
+                question: "Para manter seus arquivos bem organizados no Drive, o que é recomendado?",
                 answers:[
-                    { text:"Não.", correct: true},
-                    { text:"Sim.", correct: false},
+                    { text:"Criar pastas separadas para cada tipo de conteúdo", correct: true},
+                    { text:"Deixar tudo solto na pasta principal", correct: false},
+                    { text:"Mover tudo para o lixo", correct: false},
+                    { text:"Compartilhar com todo mundo", correct: false},
                 ],
             },
             {
-                question: "Qual foi a primeira mensagem enviada pela ARPANET ",
+                question: "Qual dessas atitudes mostra que você usa a tecnologia de forma consciente?",
                 answers:[
-                    { text: "TEST", correct: false},
-                    { text: "LOGIN", correct: true},
-                    { text: "DATA", correct: false},
+                    { text: "Baixar tudo que aparece na internet", correct: false},
+                    { text: "Aprender e usar apenas o que facilita sua rotina", correct: true},
+                    { text: "Evitar qualquer ferramenta nova", correct: false},
+                    { text: "Guardar senhas em um bloco de notas", correct: false},
                 ],
             },
-            {
-                question: " ______ é a ação de gravar/registrar as teclas pressionadas em um teclado, normalmente de maneira secreta, para que a pessoa que usa o teclado não saiba que suas ações estão sendo monitoradas. ",
-                answers:[
-                    { text: "Ransomware.", correct: false},
-                    { text: "Keylogging.", correct: true},
-                    { text: "Phishing.", correct: false},
-                ],
-            },
+           
         ];
 
         let currentQuestion = 0;
